@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { styled } from '@superset-ui/core';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { styled, CategoricalColorNamespace } from '@superset-ui/core';
 import * as echarts from 'echarts';
 import { debounce } from 'lodash';
 
@@ -66,7 +66,11 @@ async function loadSvg() {
  * When listView is true, the SVG is re‑arranged so that each group is positioned as a list item.
  */
 function getFilteredSvg(xmlDoc, targetLevel, parentId, appliedBeds = [], queryBeds = [], listView = false) {
-  const effectiveBeds = appliedBeds.length > 0 ? appliedBeds : queryBeds;
+  // const effectiveBeds = appliedBeds.length > 0 ? appliedBeds : queryBeds;
+  const effectiveBeds =
+    appliedBeds.length > 0
+      ? appliedBeds.filter((bedId) => queryBeds.includes(bedId))
+      : queryBeds;
   let groups = [];
   let baseSvgWidth = 800;
   let baseSvgHeight = 600;
@@ -165,9 +169,11 @@ const levelMapping = {
 };
 
 // Helper function to generate regions from the SVG content.
-function generateRegions(svgContent, selectedBeds, occupiedBeds, viewMode) {
+function generateRegions(svgContent, occupancyMapping, selectedBeds, occupiedBeds, viewMode, colorFn) {
   console.log('activeBeds', selectedBeds)
   console.log('occupiedBeds', occupiedBeds)
+  console.log('occupancyMapping', occupancyMapping)
+  console.log('colorFn', colorFn)
   const parser = new DOMParser();
   const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
   const occupancyMap = JSON.parse(
@@ -180,7 +186,20 @@ function generateRegions(svgContent, selectedBeds, occupiedBeds, viewMode) {
     const occupancy = occupancyMap[id] || { occupied: 0, total: 0 };
     const baseName = occupancy.baseName || g.getAttribute('data-label') || '';
     const level = g.getAttribute('data-level');
-    const areaColor = occupiedBeds.includes(id) ? 'red' : 'white';
+
+    // For bed level, pick color from occupancyMapping and theme:
+    let areaColor = 'white';
+    if (level === 'bed') {
+      console.log('occupancyMapping[id]', occupancyMapping[id])
+      const occType = occupancyMapping[id];
+      // if occType exists in theme, use that color; otherwise, default to white
+      console.log('occType && colorFn[occType]', occType && colorFn[occType])
+      areaColor = occType ? colorFn(occupancyMapping[id] || 0) : 'white';
+    }
+
+    console.log('areaColor', areaColor)
+
+    // const areaColor = occupiedBeds.includes(id) ? 'red' : 'white';
     const itemStyle = { areaColor };
 
     itemStyle.originalAreaColor =  areaColor  // save the occupancy-based color
@@ -215,11 +234,15 @@ export default function HospitalNavigator({
                                             width = 800,
                                             setDataMask,
                                             filterState: externalFilterState,
+                                            bedIdCol,
+                                            occupancyTypeCol,
+                                            colorFn,
                                           }) {
   const chartRef = useRef(null);
   const [svgData, setSvgData] = useState(null);
   const [displayedSvg, setDisplayedSvg] = useState(null);
   const [allBedIds, setAllBedIds] = useState([]);
+  const [occupancyType, setOccupancyType] = useState({});
   const [occupiedBeds, setOccupiedBeds] = useState([]);
   const [selectedBeds, setSelectedBeds] = useState([]);
   const [appliedSelectedBeds, setAppliedSelectedBeds] = useState([]);
@@ -229,19 +252,29 @@ export default function HospitalNavigator({
   const [chartKey, setChartKey] = useState(0);
   const [viewMode, setViewMode] = useState('svg'); // 'svg' or 'list'
 
+  // Memoize the external filter state to prevent unnecessary updates
+  const externalFilterStateKey = useMemo(() =>
+      JSON.stringify(externalFilterState),
+    [externalFilterState]
+  );
+
   // Update occupiedBeds based on incoming data.
   useEffect(() => {
     console.log('change in data')
     if (data && data.length) {
       console.log('new data', data)
-      setOccupiedBeds(data.map((item) => item.bed_id));
+      const occupancyType = data.reduce((acc, row) => {
+        acc[row[bedIdCol]] = row[occupancyTypeCol];
+        return acc;
+      }, {});
+      setOccupancyType(occupancyType); // assuming you add occupancyMapping state
+      setOccupiedBeds(data.map((item) => item[bedIdCol]));
     }
   }, [data, appliedSelectedBeds]);
 
   // Load the SVG only once on mount.
   useEffect(() => {
     const loadInitialSvg = async () => {
-      // debugger
       const rawSvgData = await loadSvg();
       if (rawSvgData) {
         setSvgData(rawSvgData);
@@ -255,7 +288,7 @@ export default function HospitalNavigator({
       console.log('hitx', allBedIds)
     };
     loadInitialSvg();
-  }, [appliedSelectedBeds]);
+  }, []);
 
   // Rebuild displayedSvg whenever dependencies change.
   useEffect(() => {
@@ -267,7 +300,7 @@ export default function HospitalNavigator({
         getFilteredSvg(svgData, targetLevel, parentId, appliedSelectedBeds, occupiedBeds, viewMode === 'list')
       );
     }
-  }, [svgData, data, appliedSelectedBeds, occupiedBeds, history, viewMode]);
+  }, [svgData, occupiedBeds, history, viewMode, appliedSelectedBeds]);
 
   // Remount chart when displayedSvg changes.
   useEffect(() => {
@@ -284,7 +317,7 @@ export default function HospitalNavigator({
     setChartInstance(chart);
     echarts.registerMap('hospital-map', { svg: displayedSvg });
 
-    const regions = generateRegions(displayedSvg, selectedBeds, occupiedBeds, viewMode);
+    const regions = generateRegions(displayedSvg, occupancyType, selectedBeds, occupiedBeds, viewMode, colorFn);
 
     const option = {
       geo: {
@@ -315,7 +348,7 @@ export default function HospitalNavigator({
           const level = groupElement.getAttribute('data-level');
           const id = groupElement.getAttribute('name');
           if (level === 'bed') {
-            // console.log('called level beds')
+            // Toggle bed selection
             setSelectedBeds((prevSelected) =>
               prevSelected.includes(id)
                 ? prevSelected.filter((bed) => bed !== id)
@@ -323,17 +356,14 @@ export default function HospitalNavigator({
             );
             return;
           }
-          // console.log('selected bed', selectedBeds)
 
           // Get the current history.
           const currentHistory = drilldownHistoryRef.current;
           // Determine the expected level for the next drill-down based on history length.
-          // For example, if currentHistory.length is 1, we expect a 'department' next.
           const expectedLevel = levelMapping[currentHistory.length];
 
           let newHistory = [...currentHistory];
           if (level !== expectedLevel) {
-
             let xxNewH = []
             let temp_level = groupElement.getAttribute('data-level')
             let currentEl = groupElement.parentElement
@@ -341,7 +371,6 @@ export default function HospitalNavigator({
               : null;
             // Traverse up while the element is a group with a data-level attribute.
             while (expectedLevel != temp_level) {
-
               temp_level = currentEl.getAttribute('data-level')
               xxNewH.unshift({
                 level: temp_level,
@@ -368,8 +397,6 @@ export default function HospitalNavigator({
           if (nextLevel) {
             const name = groupElement.getAttribute('name');
             updateHistory([...drilldownHistoryRef.current, { level, parentId: id, name }]);
-            // console.log('called drill down')
-            // console.log('called drill down selectedBeds', selectedBeds)
             const newSvg = getFilteredSvg(svgData, nextLevel, id, appliedSelectedBeds, occupiedBeds, viewMode === 'list');
             setDisplayedSvg(newSvg);
           }
@@ -399,29 +426,24 @@ export default function HospitalNavigator({
     return () => {
       chart.dispose();
     };
-  }, [chartKey, selectedBeds, appliedSelectedBeds, occupiedBeds, viewMode]);
+  }, [chartKey, selectedBeds, appliedSelectedBeds, occupiedBeds, viewMode, colorFn]);
 
-  // Update chart regions when selections change.
+  // Update chart regions when selections change, but avoid redundant updates
   useEffect(() => {
     if (chartInstance && displayedSvg) {
-      updateFilterState(selectedBeds, appliedSelectedBeds, history)
-      const updatedRegions = generateRegions(displayedSvg, selectedBeds, occupiedBeds, viewMode);
+      const updatedRegions = generateRegions(displayedSvg, occupancyType, selectedBeds, occupiedBeds, viewMode, colorFn);
       chartInstance.setOption({
         geo: {
           regions: updatedRegions,
         },
       });
     }
-  }, [selectedBeds, appliedSelectedBeds, displayedSvg, chartInstance]);
+  }, [selectedBeds, displayedSvg, chartInstance, occupiedBeds, colorFn]);
 
-
+  // Handle hover effects
   useEffect(() => {
     if (chartInstance) {
       let currentHighlighted = null;
-
-      // Function to update the region's shadow style.
-      // When hovering, add a glow (shadowBlur and shadowColor).
-      // When not hovering, remove the shadow by setting shadowBlur to 0.
 
       // A helper that highlights a given region and all of its descendants
       const highlightRegionAndDescendants = (regionId, isHovering) => {
@@ -431,22 +453,17 @@ export default function HospitalNavigator({
         // Parse the current SVG to locate the element
         const parser = new DOMParser();
         const svgDoc = parser.parseFromString(displayedSvg, 'image/svg+xml');
-        // const regionEl = svgDoc.getElementById(regionId);
         const regionEl = svgDoc.querySelector(`g[name="${regionId}"]`);
 
-
         if (regionEl) {
-          // Find all direct child groups (or use querySelectorAll('g') for all descendants)
+          // Find all direct child groups
           const childGroups = regionEl.querySelectorAll('g');
           childGroups.forEach(child => {
             const childId = child.getAttribute('name');
-            // Recursively highlight the child
             updateRegionShadow(childId, isHovering);
-            // Optionally, you can call highlightRegionAndDescendants(childId, isHovering) if you have multiple levels
           });
         }
       };
-
 
       const updateRegionShadow = (regionName, isHovering) => {
         const currentOption = chartInstance.getOption();
@@ -474,7 +491,6 @@ export default function HospitalNavigator({
         });
       };
 
-
       // Mouseover: apply the highlight.
       const handleMouseOver = (params) => {
         if (params.componentType === 'geo' && params.name) {
@@ -485,7 +501,7 @@ export default function HospitalNavigator({
                 type: 'downplay',
                 geoName: currentHighlighted,
               });
-              updateRegionShadow(currentHighlighted, false);
+              highlightRegionAndDescendants(currentHighlighted, false);
             }
             chartInstance.dispatchAction({
               type: 'highlight',
@@ -493,7 +509,6 @@ export default function HospitalNavigator({
               notBlur: true,
             });
             highlightRegionAndDescendants(regionName, true);
-            // updateRegionShadow(regionName, true);
             currentHighlighted = regionName;
           }
         }
@@ -508,7 +523,6 @@ export default function HospitalNavigator({
               type: 'downplay',
               geoName: regionName,
             });
-            // updateRegionShadow(regionName, false);
             highlightRegionAndDescendants(regionName, false);
             currentHighlighted = null;
           }
@@ -522,7 +536,6 @@ export default function HospitalNavigator({
             type: 'downplay',
             geoName: currentHighlighted,
           });
-          // updateRegionShadow(currentHighlighted, false);
           highlightRegionAndDescendants(currentHighlighted, false);
           currentHighlighted = null;
         }
@@ -540,41 +553,59 @@ export default function HospitalNavigator({
         chartInstance.off('globalout', handleGlobalOut);
       };
     }
-  }, [chartInstance, viewMode]);
+  }, [chartInstance, displayedSvg, occupiedBeds]);
 
-
-
-
+  // Improved updateFilterState with proper change detection
   const updateFilterState = useCallback(
     (selectedBedsParam, appliedSelectedBedsParam, historyParam) => {
-      // console.log('tried to update history')
       if (setDataMask) {
-        // console.log('updated history')
-        // console.log('updated history', selectedBedsParam)
-        setDataMask({
-          extraFormData:
-            appliedSelectedBedsParam && appliedSelectedBedsParam.length > 0
+        // Create a deep copy of the current filter state for comparison
+        const currentState = externalFilterState || {};
+        const newFilterState = {
+          selectedBeds: selectedBedsParam,
+          appliedSelectedBeds: appliedSelectedBedsParam,
+          history: historyParam
+        };
+
+        // Stringify for deep comparison
+        const currentStateStr = JSON.stringify({
+          selectedBeds: currentState.selectedBeds || [],
+          appliedSelectedBeds: currentState.appliedSelectedBeds || [],
+          history: currentState.history || []
+        });
+        const newStateStr = JSON.stringify(newFilterState);
+
+        // Only update if there's an actual change
+        if (currentStateStr !== newStateStr) {
+          console.log('Updating filter state with new values');
+          console.log('appliedSelectedBedsParam', appliedSelectedBedsParam)
+          setDataMask({
+            extraFormData: appliedSelectedBedsParam.length > 0
               ? {
                 filters: [
                   {
-                    col: 'bed_id_tests',
+                    col: bedIdCol,
                     op: 'in',
                     val: appliedSelectedBedsParam,
                   },
                 ],
               }
               : {},
-          filterState: {
-            selectedBeds: selectedBedsParam,
-            appliedSelectedBeds: appliedSelectedBedsParam,
-            history: historyParam,
-          },
-        });
+            filterState: {
+              ...newFilterState,
+              // Include the filtered data for cross-filtering
+              // value: filteredData
+            },
+          });
+        } else {
+          console.log('Filter state unchanged, skipping update');
+        }
       }
     },
-    [setDataMask]
+    [setDataMask, bedIdCol, externalFilterState, data]
   );
 
+  // Update view mode based on history
   useEffect(() => {
     // If you're at the top two layers, set list view; otherwise, use SVG view.
     if (history.length < 2 && viewMode !== 'list') {
@@ -586,40 +617,52 @@ export default function HospitalNavigator({
 
   // Apply filter: update appliedSelectedBeds and persist state.
   const applyFilter = () => {
-    setAppliedSelectedBeds(selectedBeds);
-    updateFilterState(selectedBeds, selectedBeds, drilldownHistoryRef.current);
+    // Only update if there's a change
+    if (JSON.stringify(selectedBeds) !== JSON.stringify(appliedSelectedBeds)) {
+      setAppliedSelectedBeds(selectedBeds);
+      console.log('appliedSelectedBeds', appliedSelectedBeds)
+      updateFilterState(selectedBeds, selectedBeds, drilldownHistoryRef.current);
+    }
   };
 
   // Clear selection while preserving drill‑down history.
   const clearSelection = () => {
-    setSelectedBeds([]);
-    setAppliedSelectedBeds([]);
-    console.log(allBedIds)
-    if (setDataMask) {
-      console.log('setDataMask called')
-      setDataMask({
-        extraFormData: {
-          // Adding a cacheBuster property to force a new query on each update.
-          cacheBuster: Date.now(),
-          filters: [
-            {
-              col: 'bed_id_tests',
-              op: 'in',
-              val: allBedIds,
-            },
-          ] // Ensure no filter is applied when clearing selection.
-        },
-        filterState: { selectedBeds: [],
-          appliedSelectedBeds: [],
-          history: drilldownHistoryRef.current },
-      });
+    // Only update if there are actual selections to clear
+    if (selectedBeds.length > 0 || appliedSelectedBeds.length > 0) {
+      setSelectedBeds([]);
+      setAppliedSelectedBeds([]);
+
+      if (setDataMask) {
+        setDataMask({
+          extraFormData: {
+            cacheBuster: Date.now(),
+            filters: [
+              {
+                col: bedIdCol,
+                op: 'in',
+                val: allBedIds,
+              },
+            ]
+          },
+          filterState: {
+            selectedBeds: [],
+            appliedSelectedBeds: [],
+            history: drilldownHistoryRef.current,
+            // Include all data for cross-filtering when no selection
+            // value: data
+          },
+        });
+      }
     }
   };
 
   const updateHistory = (newHistory) => {
-    drilldownHistoryRef.current = newHistory;
-    setHistory(newHistory);
-    updateFilterState(selectedBeds, appliedSelectedBeds, newHistory);
+    // Only update if the history has actually changed
+    if (JSON.stringify(drilldownHistoryRef.current) !== JSON.stringify(newHistory)) {
+      drilldownHistoryRef.current = newHistory;
+      setHistory(newHistory);
+      updateFilterState(selectedBeds, appliedSelectedBeds, newHistory);
+    }
   };
 
   const updateHistoryRemount = (extAppliedSelectedBeds, extSelectedBeds, newHistory) => {
@@ -627,9 +670,8 @@ export default function HospitalNavigator({
     setSelectedBeds(extSelectedBeds);
     setAppliedSelectedBeds(extAppliedSelectedBeds);
     setHistory(newHistory);
-    updateFilterState(extSelectedBeds, extAppliedSelectedBeds, newHistory);
+    // No need to call updateFilterState here to avoid circular update
   };
-
 
   // Navigate to a given drill‑down level.
   const navigateTo = (index) => {
@@ -639,14 +681,17 @@ export default function HospitalNavigator({
     } else {
       newHistory = drilldownHistoryRef.current.slice(0, index);
     }
-    updateHistory(newHistory);
-    const targetLevel = levelMapping[newHistory.length];
-    const parentId = newHistory.length > 0 ? newHistory[newHistory.length - 1].parentId : null;
-    // console.log('called navigate')
-    // console.log('called navigate selectedBeds', selectedBeds)
-    setDisplayedSvg(getFilteredSvg(svgData, targetLevel, parentId, appliedSelectedBeds, occupiedBeds, viewMode === 'list'));
+
+    // Only update if the history has changed
+    if (JSON.stringify(drilldownHistoryRef.current) !== JSON.stringify(newHistory)) {
+      updateHistory(newHistory);
+      const targetLevel = levelMapping[newHistory.length];
+      const parentId = newHistory.length > 0 ? newHistory[newHistory.length - 1].parentId : null;
+      setDisplayedSvg(getFilteredSvg(svgData, targetLevel, parentId, appliedSelectedBeds, occupiedBeds, viewMode === 'list'));
+    }
   };
 
+  // Synchronize with external filter state, but only when it truly changes
   useEffect(() => {
     if (externalFilterState) {
       const {
@@ -654,15 +699,18 @@ export default function HospitalNavigator({
         selectedBeds: extSelectedBeds = [],
         appliedSelectedBeds: extAppliedSelectedBeds = [],
       } = externalFilterState;
-      if (
-        JSON.stringify(extHistory) !== JSON.stringify(drilldownHistoryRef.current) ||
-        JSON.stringify(extSelectedBeds) !== JSON.stringify(selectedBeds) ||
-        JSON.stringify(extAppliedSelectedBeds) !== JSON.stringify(appliedSelectedBeds)
-      ) {
+
+      // Use deep comparison to avoid unnecessary updates
+      const isHistoryDifferent = JSON.stringify(extHistory) !== JSON.stringify(drilldownHistoryRef.current);
+      const isSelectionDifferent = JSON.stringify(extSelectedBeds) !== JSON.stringify(selectedBeds);
+      const isAppliedDifferent = JSON.stringify(extAppliedSelectedBeds) !== JSON.stringify(appliedSelectedBeds);
+
+      if (isHistoryDifferent || isSelectionDifferent || isAppliedDifferent) {
+        console.log('Updating component state from external filter state');
         updateHistoryRemount(extAppliedSelectedBeds, extSelectedBeds, extHistory);
       }
     }
-  }, [externalFilterState]);
+  }, [externalFilterStateKey]); // Only re-run when the stringified state changes
 
   return (
     <div style={{ height, width }}>

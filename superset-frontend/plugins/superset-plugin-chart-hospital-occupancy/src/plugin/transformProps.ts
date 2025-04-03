@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ChartProps, TimeseriesDataRecord } from '@superset-ui/core';
+import { ChartProps, TimeseriesDataRecord, CategoricalColorNamespace } from '@superset-ui/core';
 
 export default function transformProps(chartProps: ChartProps) {
   const {
@@ -27,12 +27,15 @@ export default function transformProps(chartProps: ChartProps) {
     hooks,
     emitCrossFilters,
     filterState,
+
   } = chartProps;
 
-  const { boldText, headerFontSize, headerText } = formData;
-  const { setDataMask = () => {}, onContextMenu } = hooks;
+  const { boldText, headerFontSize, headerText, colorScheme } = formData;
 
-  // Ensure queriesData exists and contains data
+  console.log('color_scheme', colorScheme)
+  const colorFn = CategoricalColorNamespace.getScale(colorScheme);
+
+    // Ensure queriesData exists and contains data
   if (!queriesData || !queriesData[0] || !queriesData[0].data) {
     console.warn("No data available in queriesData");
     return { width, height, data: [], boldText, headerFontSize, headerText };
@@ -53,24 +56,14 @@ export default function transformProps(chartProps: ChartProps) {
   console.log("FilterState Before Update:", filterState);
 
   // Transform the data using the first two columns
-  const data = query_data.data.map(row => ({
-    bed_id: row[colnames[0]], // Use the first column as bed ID
-    occupancy_status: row[colnames[1]], // Use the second column as status
-  }));
+  const data = query_data.data
 
   console.log("Transformed Data:", data);
 
-  // const { setDataMask = () => {}, onContextMenu } = hooks;
+  const { setDataMask = () => {}, onContextMenu } = hooks;
 
-  // 🛑 Prevent infinite loops by checking if `filterState` is actually changing
-  if (emitCrossFilters && JSON.stringify(filterState?.value) !== JSON.stringify(data)) {
-    console.log('hitting badd')
-    // setDataMask({
-    //   extraFormData: {},
-    //   filterState: { value: data }, // Only update if different
-    // });
-  }
-
+  // Create the proper return structure without modifying filterState
+  // This prevents the infinite loop by not changing filterState on each transform
   return {
     width,
     height,
@@ -79,7 +72,17 @@ export default function transformProps(chartProps: ChartProps) {
     headerFontSize,
     headerText,
     onContextMenu,
+    colorFn,
+    setDataMask,
     emitCrossFilters: formData.emitCrossFilters || false,
-    filterState: filterState || { value: [] },
+    // colorScheme: selectedColorScheme,
+    // Pass through the existing filterState without modifying it
+    filterState: filterState || {
+      selectedBeds: [],
+      appliedSelectedBeds: [],
+      history: []
+    },
+    bedIdCol: colnames[0],
+    occupancyTypeCol: colnames[1],
   };
 }
