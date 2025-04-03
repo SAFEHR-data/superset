@@ -448,18 +448,26 @@ const config = {
         type: 'asset',
       },
       {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        issuer: /\.([jt])sx?$/,
-        use: [
+        test: /\.svg$/i,
+        oneOf: [
+          // Rule for raw SVGs when using ?raw
           {
-            loader: '@svgr/webpack',
-            options: {
-              titleProp: true,
-              ref: true,
-              // this is the default value for the icon. Using other values
-              // here will replace width and height in svg with 1em
-              icon: false,
-            },
+            resourceQuery: /raw/,
+            type: 'asset/source',
+          },
+          // Rule for transforming SVGs with SVGR
+          {
+            issuer: /\.[jt]sx?$/,
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  titleProp: true,
+                  ref: true,
+                  icon: false,
+                },
+              },
+            ],
           },
         ],
       },
