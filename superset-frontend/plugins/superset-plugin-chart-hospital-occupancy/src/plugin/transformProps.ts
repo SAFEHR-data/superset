@@ -26,13 +26,11 @@ export default function transformProps(chartProps: ChartProps) {
     queriesData,
     hooks,
     emitCrossFilters,
-    filterState,
-
+    filterState
   } = chartProps;
 
-  const { boldText, headerFontSize, headerText, colorScheme } = formData;
+  const { boldText, headerFontSize, headerText, colorScheme, showLegend = true, legendTitle = 'Bed Occupancy'} = formData;
 
-  console.log('color_scheme', colorScheme)
   const colorFn = CategoricalColorNamespace.getScale(colorScheme);
 
     // Ensure queriesData exists and contains data
@@ -50,15 +48,8 @@ export default function transformProps(chartProps: ChartProps) {
     return { width, height, data: [], boldText, headerFontSize, headerText };
   }
 
-  // Debugging logs to check changes
-  console.log("QueriesData:", queriesData);
-  console.log("Columns Found:", colnames);
-  console.log("FilterState Before Update:", filterState);
-
   // Transform the data using the first two columns
   const data = query_data.data
-
-  console.log("Transformed Data:", data);
 
   const { setDataMask = () => {}, onContextMenu } = hooks;
 
@@ -84,5 +75,7 @@ export default function transformProps(chartProps: ChartProps) {
     },
     bedIdCol: colnames[0],
     occupancyTypeCol: colnames[1],
+    showLegend, // Pass the extracted value (with default)
+    legendTitle, // Pass the extracted value (with default)
   };
 }

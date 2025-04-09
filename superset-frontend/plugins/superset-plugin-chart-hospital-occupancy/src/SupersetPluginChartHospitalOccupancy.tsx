@@ -47,6 +47,46 @@ const ActionButton = styled.button`
     background: #005bb5;
   }
 `;
+// --- Legend Styles (Absolutely Positioned) ---
+const LegendContainer = styled.div`
+  position: absolute;
+  top: 70px; // Adjust as needed (below breadcrumbs if they are also absolute)
+  right: 10px; // Adjust as needed
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 5; // Ensure it's visible (adjust if needed based on breadcrumbs z-index)
+  max-height: 150px; // Optional: limit height
+  overflow-y: auto; // Optional: scroll if too many items
+  font-size: 12px;
+`;
+
+const LegendItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const LegendColorBox = styled.div<{ color: string }>`
+  width: 18px;
+  height: 18px;
+  background-color: ${({ color }) => color};
+  border: 1px solid #ccc; // Add border for light colors
+  margin-right: 6px;
+  flex-shrink: 0;
+`;
+
+const LegendLabel = styled.span`
+  color: #333;
+  white-space: nowrap;
+`;
+
 
 // Function to load the SVG file.
 async function loadSvg() {
@@ -170,10 +210,10 @@ const levelMapping = {
 
 // Helper function to generate regions from the SVG content.
 function generateRegions(svgContent, occupancyMapping, selectedBeds, occupiedBeds, viewMode, colorFn) {
-  console.log('activeBeds', selectedBeds)
-  console.log('occupiedBeds', occupiedBeds)
-  console.log('occupancyMapping', occupancyMapping)
-  console.log('colorFn', colorFn)
+  // console.log('activeBeds', selectedBeds)
+  // console.log('occupiedBeds', occupiedBeds)
+  // console.log('occupancyMapping', occupancyMapping)
+  // console.log('colorFn', colorFn)
   const parser = new DOMParser();
   const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
   const occupancyMap = JSON.parse(
@@ -190,14 +230,14 @@ function generateRegions(svgContent, occupancyMapping, selectedBeds, occupiedBed
     // For bed level, pick color from occupancyMapping and theme:
     let areaColor = 'white';
     if (level === 'bed') {
-      console.log('occupancyMapping[id]', occupancyMapping[id])
+      // console.log('occupancyMapping[id]', occupancyMapping[id])
       const occType = occupancyMapping[id];
       // if occType exists in theme, use that color; otherwise, default to white
-      console.log('occType && colorFn[occType]', occType && colorFn[occType])
+      // console.log('occType && colorFn[occType]', occType && colorFn[occType])
       areaColor = occType ? colorFn(occupancyMapping[id] || 0) : 'white';
     }
 
-    console.log('areaColor', areaColor)
+    // console.log('areaColor', areaColor)
 
     // const areaColor = occupiedBeds.includes(id) ? 'red' : 'white';
     const itemStyle = { areaColor };
@@ -237,6 +277,8 @@ export default function HospitalNavigator({
                                             bedIdCol,
                                             occupancyTypeCol,
                                             colorFn,
+                                            showLegend,
+                                            legendTitle,
                                           }) {
   const chartRef = useRef(null);
   const [svgData, setSvgData] = useState(null);
@@ -251,6 +293,7 @@ export default function HospitalNavigator({
   const [chartInstance, setChartInstance] = useState(null);
   const [chartKey, setChartKey] = useState(0);
   const [viewMode, setViewMode] = useState('svg'); // 'svg' or 'list'
+  const [uniqueOccupancyTypes, setUniqueOccupancyTypes] = useState<Array<string | number>>([]);
 
   // Memoize the external filter state to prevent unnecessary updates
   const externalFilterStateKey = useMemo(() =>
@@ -258,11 +301,31 @@ export default function HospitalNavigator({
     [externalFilterState]
   );
 
+  useEffect(() => {
+    if (data && data.length > 0 && occupancyTypeCol) {
+      const types = new Set<string | number>();
+      data.forEach(row => {
+        const type = row[occupancyTypeCol];
+        // Add type if it's not null or undefined
+        if (type !== null && type !== undefined) {
+          types.add(type);
+        }
+      });
+      // Sort types alphabetically for consistent legend order
+      const sortedTypes = Array.from(types).sort((a, b) => String(a).localeCompare(String(b)));
+      setUniqueOccupancyTypes(sortedTypes);
+    } else {
+      // Clear types if data is empty or column is missing
+      setUniqueOccupancyTypes([]);
+    }
+  }, [data, occupancyTypeCol]); // Recalculate when data or the relevant column changes
+
+
   // Update occupiedBeds based on incoming data.
   useEffect(() => {
     console.log('change in data')
     if (data && data.length) {
-      console.log('new data', data)
+      // console.log('new data', data)
       const occupancyType = data.reduce((acc, row) => {
         acc[row[bedIdCol]] = row[occupancyTypeCol];
         return acc;
@@ -281,11 +344,11 @@ export default function HospitalNavigator({
         const bedIds = Array.from(rawSvgData.querySelectorAll('g[data-level="bed"]')).map(
           (bed) => bed.getAttribute('name')
         );
-        console.log('bedIds testing', bedIds)
+        // console.log('bedIds testing', bedIds)
         setAllBedIds(bedIds);
-        console.log('reached')
+        // console.log('reached')
       }
-      console.log('hitx', allBedIds)
+      // console.log('hitx', allBedIds)
     };
     loadInitialSvg();
   }, []);
@@ -577,8 +640,8 @@ export default function HospitalNavigator({
 
         // Only update if there's an actual change
         if (currentStateStr !== newStateStr) {
-          console.log('Updating filter state with new values');
-          console.log('appliedSelectedBedsParam', appliedSelectedBedsParam)
+          // console.log('Updating filter state with new values');
+          // console.log('appliedSelectedBedsParam', appliedSelectedBedsParam)
           setDataMask({
             extraFormData: appliedSelectedBedsParam.length > 0
               ? {
@@ -620,7 +683,7 @@ export default function HospitalNavigator({
     // Only update if there's a change
     if (JSON.stringify(selectedBeds) !== JSON.stringify(appliedSelectedBeds)) {
       setAppliedSelectedBeds(selectedBeds);
-      console.log('appliedSelectedBeds', appliedSelectedBeds)
+      // console.log('appliedSelectedBeds', appliedSelectedBeds)
       updateFilterState(selectedBeds, selectedBeds, drilldownHistoryRef.current);
     }
   };
@@ -706,7 +769,7 @@ export default function HospitalNavigator({
       const isAppliedDifferent = JSON.stringify(extAppliedSelectedBeds) !== JSON.stringify(appliedSelectedBeds);
 
       if (isHistoryDifferent || isSelectionDifferent || isAppliedDifferent) {
-        console.log('Updating component state from external filter state');
+        // console.log('Updating component state from external filter state');
         updateHistoryRemount(extAppliedSelectedBeds, extSelectedBeds, extHistory);
       }
     }
@@ -728,6 +791,29 @@ export default function HospitalNavigator({
         {/*  {viewMode === 'svg' ? 'List View' : 'SVG View'}*/}
         {/*</ActionButton>*/}
       </BreadcrumbContainer>
+      {showLegend && uniqueOccupancyTypes.length > 0 && colorFn && (
+        <LegendContainer>
+          {/* Use the legendTitle prop directly */}
+          {legendTitle && (
+            <LegendLabel style={{ fontWeight: 'bold', marginBottom: '6px', display: 'block' }}>
+              {legendTitle}
+            </LegendLabel>
+          )}
+
+          {uniqueOccupancyTypes.map((type) => {
+            const typeString = String(type);
+            const color = colorFn(typeString) || '#CCCCCC'; // colorFn is passed directly
+            const displayName = typeString || t('N/A');
+
+            return (
+              <LegendItem key={typeString}>
+                <LegendColorBox color={color} />
+                <LegendLabel title={displayName}>{displayName}</LegendLabel>
+              </LegendItem>
+            );
+          })}
+        </LegendContainer>
+      )}
       <div ref={chartRef} style={{ width: '100%', height: `calc(100% - 50px)` }} />
     </div>
   );

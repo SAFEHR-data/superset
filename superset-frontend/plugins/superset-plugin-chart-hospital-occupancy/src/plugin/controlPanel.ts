@@ -156,6 +156,34 @@ const config: ControlPanelConfig = {
       expanded: true,
       controlSetRows: [
         ['color_scheme'],
+        [
+          {
+            name: 'show_legend', // Renamed for clarity
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show Legend'),
+              renderTrigger: true,
+              default: true,
+              description: t('Whether to display the legend box.'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'legend_title',
+            config: {
+              type: 'TextControl',
+              label: t('Legend Title Text'),
+              renderTrigger: true,
+              default: t('Bed Occupancy'), // Default title
+              description: t(
+                'The text to display as the legend title. Only shown if "Show Legend" is checked.'
+              ),
+              // Make title dependent on the main 'show_legend' checkbox
+              visibility: ({ controls }) => controls?.show_legend?.value === true,
+            },
+          },
+        ],
       ],
     },
   ],
