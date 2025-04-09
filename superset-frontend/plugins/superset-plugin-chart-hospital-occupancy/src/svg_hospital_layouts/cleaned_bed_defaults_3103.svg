@@ -1,0 +1,519 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="402">
+  <g ids="Floor 6" name="Floor 6" data-label="Floor 6" data-level="floor">
+    <g ids="UCH T06 SOUTH PACU" name="UCH T06 SOUTH PACU" data-label="UCH T06 SOUTH PACU" data-level="department">
+      <g ids="BY07" name="BY07" data-label="BY07" data-level="room">
+        <rect x="10" y="8.0" width="18" height="22" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY07^BY07-32" name="1020100171^T06PACU BY07^BY07-32" data-label="32" data-level="bed">
+          <rect x="12" y="22.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY07^BY07-33" name="1020100171^T06PACU BY07^BY07-33" data-label="33" data-level="bed">
+          <rect x="12" y="12.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY07^BY07-35" name="1020100171^T06PACU BY07^BY07-35" data-label="35" data-level="bed">
+          <rect x="22" y="22.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY12" name="BY12" data-label="BY12" data-level="room">
+        <rect x="10" y="88.0" width="18" height="22" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY12^BY12-51" name="1020100171^T06PACU BY12^BY12-51" data-label="51" data-level="bed">
+          <rect x="22" y="92.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY12^BY12-52" name="1020100171^T06PACU BY12^BY12-52" data-label="52" data-level="bed">
+          <rect x="22" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY12^BY12-53" name="1020100171^T06PACU BY12^BY12-53" data-label="53" data-level="bed">
+          <rect x="12" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY08" name="BY08" data-label="BY08" data-level="room">
+        <rect x="30" y="8.0" width="18" height="22" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY08^BY08-36" name="1020100171^T06PACU BY08^BY08-36" data-label="36" data-level="bed">
+          <rect x="32" y="22.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY08^BY08-37" name="1020100171^T06PACU BY08^BY08-37" data-label="37" data-level="bed">
+          <rect x="42" y="12.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY08^BY08-38" name="1020100171^T06PACU BY08^BY08-38" data-label="38" data-level="bed">
+          <rect x="42" y="22.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY11" name="BY11" data-label="BY11" data-level="room">
+        <rect x="30" y="88.0" width="18" height="22" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY11^BY11-48" name="1020100171^T06PACU BY11^BY11-48" data-label="48" data-level="bed">
+          <rect x="42" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY11^BY11-49" name="1020100171^T06PACU BY11^BY11-49" data-label="49" data-level="bed">
+          <rect x="32" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY11^BY11-50" name="1020100171^T06PACU BY11^BY11-50" data-label="50" data-level="bed">
+          <rect x="32" y="92.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR39" name="SR39" data-label="SR39" data-level="room">
+        <rect x="50" y="8.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU SR39^SR39-39" name="1020100171^T06PACU SR39^SR39-39" data-label="39" data-level="bed">
+          <rect x="52" y="12.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY10" name="BY10" data-label="BY10" data-level="room">
+        <rect x="60" y="98.0" width="18" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY10^BY10-46" name="1020100171^T06PACU BY10^BY10-46" data-label="46" data-level="bed">
+          <rect x="72" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY10^BY10-47" name="1020100171^T06PACU BY10^BY10-47" data-label="47" data-level="bed">
+          <rect x="62" y="102.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY09" name="BY09" data-label="BY09" data-level="room">
+        <rect x="70" y="8.0" width="8" height="22" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU BY09^BY09-40" name="1020100171^T06PACU BY09^BY09-40" data-label="40" data-level="bed">
+          <rect x="72" y="12.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020100171^T06PACU BY09^BY09-41" name="1020100171^T06PACU BY09^BY09-41" data-label="41" data-level="bed">
+          <rect x="72" y="22.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR42" name="SR42" data-label="SR42" data-level="room">
+        <rect x="70" y="38.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU SR42^SR42-42" name="1020100171^T06PACU SR42^SR42-42" data-label="42" data-level="bed">
+          <rect x="72" y="42.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR43" name="SR43" data-label="SR43" data-level="room">
+        <rect x="70" y="50.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU SR43^SR43-43" name="1020100171^T06PACU SR43^SR43-43" data-label="43" data-level="bed">
+          <rect x="72" y="54.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR44" name="SR44" data-label="SR44" data-level="room">
+        <rect x="70" y="62.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU SR44^SR44-44" name="1020100171^T06PACU SR44^SR44-44" data-label="44" data-level="bed">
+          <rect x="72" y="66.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR45" name="SR45" data-label="SR45" data-level="room">
+        <rect x="70" y="74.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020100171^T06PACU SR45^SR45-45" name="1020100171^T06PACU SR45^SR45-45" data-label="45" data-level="bed">
+          <rect x="72" y="78.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="8" y="6.0" width="72" height="106" fill="none" stroke="blue"/>
+    </g>
+    <rect x="4" y="2.0" width="80" height="114" fill="none" stroke="red"/>
+  </g>
+  <g ids="Floor 3" name="Floor 3" data-label="Floor 3" data-level="floor">
+    <g ids="UCH T03 INTENSIVE CARE" name="UCH T03 INTENSIVE CARE" data-label="UCH T03 INTENSIVE CARE" data-level="department">
+      <g ids="SR02" name="SR02" data-label="SR02" data-level="room">
+        <rect x="20" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR02^SR02-02" name="T03^T03 SR02^SR02-02" data-label="2" data-level="bed">
+          <rect x="22" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR01" name="SR01" data-label="SR01" data-level="room">
+        <rect x="20" y="144.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR01^SR01-01" name="T03^T03 SR01^SR01-01" data-label="1" data-level="bed">
+          <rect x="22" y="148.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY05" name="BY05" data-label="BY05" data-level="room">
+        <rect x="20" y="212.0" width="18" height="32" fill="none" stroke="green"/>
+        <g ids="T03^T03 BY05^BY05-33" name="T03^T03 BY05^BY05-33" data-label="33" data-level="bed">
+          <rect x="32" y="236.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY05^BY05-34" name="T03^T03 BY05^BY05-34" data-label="34" data-level="bed">
+          <rect x="22" y="236.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY05^BY05-35" name="T03^T03 BY05^BY05-35" data-label="35" data-level="bed">
+          <rect x="22" y="226.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY05^BY05-36" name="T03^T03 BY05^BY05-36" data-label="36" data-level="bed">
+          <rect x="22" y="216.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR03" name="SR03" data-label="SR03" data-level="room">
+        <rect x="30" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR03^SR03-03" name="T03^T03 SR03^SR03-03" data-label="3" data-level="bed">
+          <rect x="32" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR04" name="SR04" data-label="SR04" data-level="room">
+        <rect x="40" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR04^SR04-04" name="T03^T03 SR04^SR04-04" data-label="4" data-level="bed">
+          <rect x="42" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR05" name="SR05" data-label="SR05" data-level="room">
+        <rect x="50" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR05^SR05-05" name="T03^T03 SR05^SR05-05" data-label="5" data-level="bed">
+          <rect x="52" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR06" name="SR06" data-label="SR06" data-level="room">
+        <rect x="60" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR06^SR06-06" name="T03^T03 SR06^SR06-06" data-label="6" data-level="bed">
+          <rect x="62" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR32" name="SR32" data-label="SR32" data-level="room">
+        <rect x="60" y="232.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR32^SR32-32" name="T03^T03 SR32^SR32-32" data-label="32" data-level="bed">
+          <rect x="62" y="236.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR07" name="SR07" data-label="SR07" data-level="room">
+        <rect x="70" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR07^SR07-07" name="T03^T03 SR07^SR07-07" data-label="7" data-level="bed">
+          <rect x="72" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY01" name="BY01" data-label="BY01" data-level="room">
+        <rect x="70" y="152.0" width="28" height="22" fill="none" stroke="green"/>
+        <g ids="T03^T03 BY01^BY01-11" name="T03^T03 BY01^BY01-11" data-label="11" data-level="bed">
+          <rect x="72" y="156.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY01^BY01-12" name="T03^T03 BY01^BY01-12" data-label="12" data-level="bed">
+          <rect x="82" y="156.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY01^BY01-14" name="T03^T03 BY01^BY01-14" data-label="14" data-level="bed">
+          <rect x="92" y="156.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY01^BY01-15" name="T03^T03 BY01^BY01-15" data-label="15" data-level="bed">
+          <rect x="82" y="166.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY01^BY01-16" name="T03^T03 BY01^BY01-16" data-label="16" data-level="bed">
+          <rect x="72" y="166.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY02" name="BY02" data-label="BY02" data-level="room">
+        <rect x="70" y="182.0" width="28" height="22" fill="none" stroke="green"/>
+        <g ids="T03^T03 BY02^BY02-17" name="T03^T03 BY02^BY02-17" data-label="17" data-level="bed">
+          <rect x="72" y="186.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY02^BY02-18" name="T03^T03 BY02^BY02-18" data-label="18" data-level="bed">
+          <rect x="82" y="186.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY02^BY02-19" name="T03^T03 BY02^BY02-19" data-label="19" data-level="bed">
+          <rect x="92" y="196.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY02^BY02-20" name="T03^T03 BY02^BY02-20" data-label="20" data-level="bed">
+          <rect x="82" y="196.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY02^BY02-21" name="T03^T03 BY02^BY02-21" data-label="21" data-level="bed">
+          <rect x="72" y="196.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY03" name="BY03" data-label="BY03" data-level="room">
+        <rect x="70" y="204.0" width="28" height="22" fill="none" stroke="green"/>
+        <g ids="T03^T03 BY03^BY03-22" name="T03^T03 BY03^BY03-22" data-label="22" data-level="bed">
+          <rect x="72" y="208.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY03^BY03-23" name="T03^T03 BY03^BY03-23" data-label="23" data-level="bed">
+          <rect x="82" y="208.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY03^BY03-24" name="T03^T03 BY03^BY03-24" data-label="24" data-level="bed">
+          <rect x="92" y="218.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY03^BY03-25" name="T03^T03 BY03^BY03-25" data-label="25" data-level="bed">
+          <rect x="82" y="218.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY03^BY03-26" name="T03^T03 BY03^BY03-26" data-label="26" data-level="bed">
+          <rect x="72" y="218.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="BY04" name="BY04" data-label="BY04" data-level="room">
+        <rect x="70" y="226.0" width="28" height="22" fill="none" stroke="green"/>
+        <g ids="T03^T03 BY04^BY04-27" name="T03^T03 BY04^BY04-27" data-label="27" data-level="bed">
+          <rect x="72" y="230.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY04^BY04-28" name="T03^T03 BY04^BY04-28" data-label="28" data-level="bed">
+          <rect x="82" y="230.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY04^BY04-29" name="T03^T03 BY04^BY04-29" data-label="29" data-level="bed">
+          <rect x="92" y="230.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY04^BY04-30" name="T03^T03 BY04^BY04-30" data-label="30" data-level="bed">
+          <rect x="82" y="240.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="T03^T03 BY04^BY04-31" name="T03^T03 BY04^BY04-31" data-label="31" data-level="bed">
+          <rect x="72" y="240.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR08" name="SR08" data-label="SR08" data-level="room">
+        <rect x="80" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR08^SR08-08" name="T03^T03 SR08^SR08-08" data-label="8" data-level="bed">
+          <rect x="82" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR09" name="SR09" data-label="SR09" data-level="room">
+        <rect x="90" y="132.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR09^SR09-09" name="T03^T03 SR09^SR09-09" data-label="9" data-level="bed">
+          <rect x="92" y="136.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR10" name="SR10" data-label="SR10" data-level="room">
+        <rect x="90" y="248.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="T03^T03 SR10^SR10-10" name="T03^T03 SR10^SR10-10" data-label="10" data-level="bed">
+          <rect x="92" y="252.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="18" y="130.0" width="82" height="132" fill="none" stroke="blue"/>
+    </g>
+    <rect x="14" y="126.0" width="90" height="140" fill="none" stroke="red"/>
+  </g>
+  <g ids="Floor 1" name="Floor 1" data-label="Floor 1" data-level="floor">
+    <g ids="GWB L01 CRITICAL CARE" name="GWB L01 CRITICAL CARE" data-label="GWB L01 CRITICAL CARE" data-level="department">
+      <g ids="SR01" name="SR01" data-label="SR01" data-level="room">
+        <rect x="10" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR01^SR01-01" name="1021800003^GWB L01W SR01^SR01-01" data-label="1" data-level="bed">
+          <rect x="12" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR02" name="SR02" data-label="SR02" data-level="room">
+        <rect x="30" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR02^SR02-02" name="1021800003^GWB L01W SR02^SR02-02" data-label="2" data-level="bed">
+          <rect x="32" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR10" name="SR10" data-label="SR10" data-level="room">
+        <rect x="30" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR10^SR10-10" name="1021800003^GWB L01W SR10^SR10-10" data-label="10" data-level="bed">
+          <rect x="32" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR03" name="SR03" data-label="SR03" data-level="room">
+        <rect x="40" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR03^SR03-03" name="1021800003^GWB L01W SR03^SR03-03" data-label="3" data-level="bed">
+          <rect x="42" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR04" name="SR04" data-label="SR04" data-level="room">
+        <rect x="60" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR04^SR04-04" name="1021800003^GWB L01W SR04^SR04-04" data-label="4" data-level="bed">
+          <rect x="62" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR09" name="SR09" data-label="SR09" data-level="room">
+        <rect x="60" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR09^SR09-09" name="1021800003^GWB L01W SR09^SR09-09" data-label="9" data-level="bed">
+          <rect x="62" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR05" name="SR05" data-label="SR05" data-level="room">
+        <rect x="70" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR05^SR05-05" name="1021800003^GWB L01W SR05^SR05-05" data-label="5" data-level="bed">
+          <rect x="72" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR08" name="SR08" data-label="SR08" data-level="room">
+        <rect x="70" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR08^SR08-08" name="1021800003^GWB L01W SR08^SR08-08" data-label="8" data-level="bed">
+          <rect x="72" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR06" name="SR06" data-label="SR06" data-level="room">
+        <rect x="80" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR06^SR06-06" name="1021800003^GWB L01W SR06^SR06-06" data-label="6" data-level="bed">
+          <rect x="82" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR07" name="SR07" data-label="SR07" data-level="room">
+        <rect x="80" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1021800003^GWB L01W SR07^SR07-07" name="1021800003^GWB L01W SR07^SR07-07" data-label="7" data-level="bed">
+          <rect x="82" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="8" y="280.0" width="82" height="46" fill="none" stroke="blue"/>
+    </g>
+    <g ids="NHNN C1 NCCU" name="NHNN C1 NCCU" data-label="NHNN C1 NCCU" data-level="department">
+      <g ids="HDU2" name="HDU2" data-label="HDU2" data-level="room">
+        <rect x="10" y="282.0" width="38" height="22" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-14" name="1020200075^C1NCCU HDU2^HDU2-14" data-label="14" data-level="bed">
+          <rect x="32" y="296.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-15" name="1020200075^C1NCCU HDU2^HDU2-15" data-label="15" data-level="bed">
+          <rect x="22" y="296.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-16" name="1020200075^C1NCCU HDU2^HDU2-16" data-label="16" data-level="bed">
+          <rect x="12" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-17" name="1020200075^C1NCCU HDU2^HDU2-17" data-label="17" data-level="bed">
+          <rect x="22" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-18" name="1020200075^C1NCCU HDU2^HDU2-18" data-label="18" data-level="bed">
+          <rect x="32" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU2^HDU2-19" name="1020200075^C1NCCU HDU2^HDU2-19" data-label="19" data-level="bed">
+          <rect x="42" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU" name="ICU" data-label="ICU" data-level="room">
+        <rect x="60" y="282.0" width="38" height="22" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU ICU^ICU-01" name="1020200075^C1NCCU ICU^ICU-01" data-label="1" data-level="bed">
+          <rect x="72" y="296.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU ICU^ICU-02" name="1020200075^C1NCCU ICU^ICU-02" data-label="2" data-level="bed">
+          <rect x="62" y="296.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU ICU^ICU-03" name="1020200075^C1NCCU ICU^ICU-03" data-label="3" data-level="bed">
+          <rect x="62" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU ICU^ICU-04" name="1020200075^C1NCCU ICU^ICU-04" data-label="4" data-level="bed">
+          <rect x="72" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU ICU^ICU-05" name="1020200075^C1NCCU ICU^ICU-05" data-label="5" data-level="bed">
+          <rect x="82" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU ICU^ICU-06" name="1020200075^C1NCCU ICU^ICU-06" data-label="6" data-level="bed">
+          <rect x="92" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="HDU1" name="HDU1" data-label="HDU1" data-level="room">
+        <rect x="60" y="312.0" width="38" height="22" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU HDU1^HDU1-10" name="1020200075^C1NCCU HDU1^HDU1-10" data-label="10" data-level="bed">
+          <rect x="92" y="326.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU1^HDU1-11" name="1020200075^C1NCCU HDU1^HDU1-11" data-label="11" data-level="bed">
+          <rect x="72" y="326.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU1^HDU1-12" name="1020200075^C1NCCU HDU1^HDU1-12" data-label="12" data-level="bed">
+          <rect x="62" y="326.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200075^C1NCCU HDU1^HDU1-13" name="1020200075^C1NCCU HDU1^HDU1-13" data-label="13" data-level="bed">
+          <rect x="62" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU SR07" name="ICU SR07" data-label="ICU SR07" data-level="room">
+        <rect x="100" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU SR07^ICU-07 SR" name="1020200075^C1NCCU SR07^ICU-07 SR" data-label="7" data-level="bed">
+          <rect x="102" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU SR08" name="ICU SR08" data-label="ICU SR08" data-level="room">
+        <rect x="100" y="294.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU SR08^ICU-08 SR" name="1020200075^C1NCCU SR08^ICU-08 SR" data-label="8" data-level="bed">
+          <rect x="102" y="298.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU SR09" name="ICU SR09" data-label="ICU SR09" data-level="room">
+        <rect x="100" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200075^C1NCCU SR09^ICU-09 SR" name="1020200075^C1NCCU SR09^ICU-09 SR" data-label="9" data-level="bed">
+          <rect x="102" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="8" y="280.0" width="102" height="56" fill="none" stroke="blue"/>
+    </g>
+    <g ids="WMS W01 CRITICAL CARE" name="WMS W01 CRITICAL CARE" data-label="WMS W01 CRITICAL CARE" data-level="department">
+      <g ids="CB01" name="CB01" data-label="CB01" data-level="room">
+        <rect x="10" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB01^CB01-01" name="WSCC^WMSCCU CB01^CB01-01" data-label="1" data-level="bed">
+          <rect x="12" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB02" name="CB02" data-label="CB02" data-level="room">
+        <rect x="20" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB02^CB02-02" name="WSCC^WMSCCU CB02^CB02-02" data-label="2" data-level="bed">
+          <rect x="22" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB03" name="CB03" data-label="CB03" data-level="room">
+        <rect x="30" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB03^CB03-03" name="WSCC^WMSCCU CB03^CB03-03" data-label="3" data-level="bed">
+          <rect x="32" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB09" name="CB09" data-label="CB09" data-level="room">
+        <rect x="30" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB09^CB09-09" name="WSCC^WMSCCU CB09^CB09-09" data-label="9" data-level="bed">
+          <rect x="32" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB04" name="CB04" data-label="CB04" data-level="room">
+        <rect x="40" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB04^CB04-04" name="WSCC^WMSCCU CB04^CB04-04" data-label="4" data-level="bed">
+          <rect x="42" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB08" name="CB08" data-label="CB08" data-level="room">
+        <rect x="40" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB08^CB08-08" name="WSCC^WMSCCU CB08^CB08-08" data-label="8" data-level="bed">
+          <rect x="42" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB05" name="CB05" data-label="CB05" data-level="room">
+        <rect x="50" y="282.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB05^CB05-05" name="WSCC^WMSCCU CB05^CB05-05" data-label="5" data-level="bed">
+          <rect x="52" y="286.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="CB07" name="CB07" data-label="CB07" data-level="room">
+        <rect x="50" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU CB07^CB07-07" name="WSCC^WMSCCU CB07^CB07-07" data-label="7" data-level="bed">
+          <rect x="52" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="SR06" name="SR06" data-label="SR06" data-level="room">
+        <rect x="60" y="312.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="WSCC^WMSCCU SR06^SR06-06" name="WSCC^WMSCCU SR06^SR06-06" data-label="6" data-level="bed">
+          <rect x="62" y="316.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="8" y="280.0" width="62" height="46" fill="none" stroke="blue"/>
+    </g>
+    <rect x="4" y="276.0" width="110" height="64" fill="none" stroke="red"/>
+  </g>
+  <g ids="Floor 0" name="Floor 0" data-label="Floor 0" data-level="floor">
+    <g ids="NHNN C0 NCCU" name="NHNN C0 NCCU" data-label="NHNN C0 NCCU" data-level="department">
+      <g ids="ICU SR20" name="ICU SR20" data-label="ICU SR20" data-level="room">
+        <rect x="10" y="356.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU SR20^ICU-20 SR" name="1020200074^C0NCCU SR20^ICU-20 SR" data-label="20" data-level="bed">
+          <rect x="12" y="360.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="HDU SR25" name="HDU SR25" data-label="HDU SR25" data-level="room">
+        <rect x="10" y="376.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU SR25^HDU-25 SR" name="1020200074^C0NCCU SR25^HDU-25 SR" data-label="25" data-level="bed">
+          <rect x="12" y="380.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU" name="ICU" data-label="ICU" data-level="room">
+        <rect x="30" y="356.0" width="28" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU ICU^ICU-21" name="1020200074^C0NCCU ICU^ICU-21" data-label="21" data-level="bed">
+          <rect x="32" y="360.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200074^C0NCCU ICU^ICU-22" name="1020200074^C0NCCU ICU^ICU-22" data-label="22" data-level="bed">
+          <rect x="42" y="360.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200074^C0NCCU ICU^ICU-23" name="1020200074^C0NCCU ICU^ICU-23" data-label="23" data-level="bed">
+          <rect x="52" y="360.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="HDU" name="HDU" data-label="HDU" data-level="room">
+        <rect x="30" y="376.0" width="28" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU HDU^HDU-26" name="1020200074^C0NCCU HDU^HDU-26" data-label="26" data-level="bed">
+          <rect x="32" y="380.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200074^C0NCCU HDU^HDU-27" name="1020200074^C0NCCU HDU^HDU-27" data-label="27" data-level="bed">
+          <rect x="42" y="380.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+        <g ids="1020200074^C0NCCU HDU^HDU-28" name="1020200074^C0NCCU HDU^HDU-28" data-label="28" data-level="bed">
+          <rect x="52" y="380.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="ICU SR24" name="ICU SR24" data-label="ICU SR24" data-level="room">
+        <rect x="70" y="356.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU SR24^ICU-24 SR" name="1020200074^C0NCCU SR24^ICU-24 SR" data-label="24" data-level="bed">
+          <rect x="72" y="360.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <g ids="PLEX SR29" name="PLEX SR29" data-label="PLEX SR29" data-level="room">
+        <rect x="70" y="376.0" width="8" height="12" fill="none" stroke="green"/>
+        <g ids="1020200074^C0NCCU SR29 PLEX^PLEX-29 SR" name="1020200074^C0NCCU SR29 PLEX^PLEX-29 SR" data-label="29" data-level="bed">
+          <rect x="72" y="380.0" width="4" height="6" fill="lightblue" stroke="black"/>
+        </g>
+      </g>
+      <rect x="8" y="354.0" width="72" height="36" fill="none" stroke="blue"/>
+    </g>
+    <rect x="4" y="350.0" width="80" height="44" fill="none" stroke="red"/>
+  </g>
+</svg>
